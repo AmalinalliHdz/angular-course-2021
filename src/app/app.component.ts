@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-root', //Nombre del componente
+  templateUrl: './app.component.html',//HTML que va a usar el componente
+  styleUrls: ['./app.component.scss'] //hojas de estilo
 })
 export class AppComponent {
   title = 'angular2021';
@@ -97,6 +97,5 @@ export class AppComponent {
       const arrayExe = [1,2,3,4,5,6].filter(num=> num%2 != 0)
       const cad = arrayExe.join(',');
       console.log(cad);
-
   }
 }
