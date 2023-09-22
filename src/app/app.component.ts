@@ -98,4 +98,12 @@ export class AppComponent {
       const cad = arrayExe.join(',');
       console.log(cad);
   }
+
+  printDataAmalinalliComp(event:any){
+    console.log('AMALINALLI COMP:', event)
+  }
+
+  printData(event: any){
+    console.log('CHILD COMP SEND DATA:', event);
+  }
 }
