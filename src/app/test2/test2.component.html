@@ -1,4 +1,15 @@
 <div style="border: 5px green solid;">
 <p>test2 works!</p>
 <button (click)="onclickShow($event)">Mostrar nombre</button>
+<p>MI VAR: {{myvar1}}</p>
+
+<input type="text" [(ngModel)]="myvar1">
+<input type="number" [(ngModel)]="myvar2">
+<input type="number" [(ngModel)]="myvar3">
+
+<button id="mybutton"
+(click)="test0($event)"
+(blur)="test1($event)"
+(dblclick)="test2($event)">do click events</button>
+
 </div>
