@@ -1,4 +1,9 @@
 <p>APP COMPONENT </p>
 <amalinalli-comp status="Busy" (onSendData)="printDataAmalinalliComp($event)"></amalinalli-comp>
 <app-test2 name="Omar" lastName="Labastida" (onSendData)="printData($event)"></app-test2>
-<app-test3 name="myStatus"></app-test3>
+
+<input type="text" [(ngModel)]="myStatus">
+<button (click) ="sw = !sw"> show test 3</button>
+<div *ngIf="sw">
+  <app-test3 [name3]="myStatus"></app-test3>
+</div>
