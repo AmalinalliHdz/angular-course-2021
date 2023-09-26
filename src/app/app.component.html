@@ -4,6 +4,52 @@
 
 <input type="text" [(ngModel)]="myStatus">
 <button (click) ="sw = !sw"> show test 3</button>
-<div *ngIf="sw">
+<!--<div *ngIf="sw"> destruye el componente-->
+<div [hidden]="sw"> <!--Div existe pero lo oculta-->
   <app-test3 [name3]="myStatus"></app-test3>
 </div>
+
+<ul>
+  <li *ngFor="let item of [1,2,3,4,5]">{{item}}</li>
+  <li *ngFor="let item of ['first', 'second'], let i = index">{{item}}{{i}}</li>
+  <li *ngFor="let item of ['first', 'second']">
+    <amalinalli-comp [status]="item" (onSendData)="printDataAmalinalliComp($event)"></amalinalli-comp>
+  </li>
+
+</ul>
+
+<input type="text" [(ngModel)]="color">
+<ul [ngSwitch]="color">
+  <li *ngSwitchCase="'red'">red
+    <amalinalli-comp [status]="color" (onSendData)="printDataAmalinalliComp($event)"></amalinalli-comp>
+  </li>
+  <li *ngSwitchCase="'yellow'">yellow
+    <app-test3 [name3]="color"></app-test3>
+  </li>
+  <li *ngSwitchCase="'green'">green</li>
+  <li *ngSwitchDefault>Default</li>
+</ul>
+
+<button (click) ="sw = !sw"> show test 3</button>
+<div *ngIf="sw else myVarElse"> <!--destruye el componente-->
+  <app-test3 [name3]="myStatus"></app-test3>
+</div>
+
+<ng-template #myVarElse> <!--Variable local #-->
+  <p>ESTE ES MI TEMPLATE</p>
+  <p>ESTE ES MI TEMPLATE</p>
+  <p>ESTE ES MI TEMPLATE</p>
+  <p>ESTE ES MI TEMPLATE</p>
+  <p>ESTE ES MI TEMPLATE</p>
+  <p>ESTE ES MI TEMPLATE</p>
+</ng-template>
+
+<app-test2 name="Omar" lastName="Labastida" (onSendData)="printData($event)"><!--ng-content-->
+  <p>Mi propio contenido</p>
+  <button>Mi boton</button>
+</app-test2>
+
+<button (click) ="sw = !sw"> show test 3</button>
+<ng-container *ngIf="sw"> <!--Para no romper estilos-->
+  <p>NG-CONTAINER</p>
+</ng-container>

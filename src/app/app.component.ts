@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'angular2021';
   myStatus = 'my status';
   sw = true;
+  color ='';
   
   constructor(){
     //operador MAP [Devuelve un nuevo array]
