@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject, of, Subscription } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root', //Nombre del componente
@@ -10,8 +12,39 @@ export class AppComponent {
   myStatus = 'my status';
   sw = true;
   color ='';
+  tictok = of([1,2,3,4,5]);
+  tiktok = new BehaviorSubject(1); //Solo almacena datos
+  personASub: Subscription=new Subscription;
+  
   
   constructor(){
+    //observables & subscribes
+    this.tictok.pipe(
+      map(s=>s.join('-')),
+      map(s=>s + ' Hola ')
+    ).subscribe(v => {
+      console.log('PA VIDEO ', v)
+    });
+    this.tictok.pipe(
+      filter(v => v[1]%2===0)
+    ).subscribe(v => {
+      console.log('PB VIDEO ', v)
+    });
+    this.tictok.subscribe(v => {
+      console.log('PC VIDEO ', v)
+    });
+
+    this.personASub = this.tiktok.pipe().subscribe(v => {
+      console.log('PA2 VIDEO ', v)
+    });
+    this.tiktok.pipe().subscribe(v => {
+      console.log('PB2 VIDEO ', v)
+    });
+    this.tiktok.subscribe(v => {
+      console.log('PC2 VIDEO ', v)
+    });
+
+/*------------------------------------
     //operador MAP [Devuelve un nuevo array]
    const testMap = [1,2,3,4,5,6].map(item => item);
    console.log(testMap);
@@ -99,7 +132,14 @@ export class AppComponent {
       //[1,2,3,4,5,6] filtrar numeros impares y mostrar como cadena
       const arrayExe = [1,2,3,4,5,6].filter(num=> num%2 != 0)
       const cad = arrayExe.join(',');
-      console.log(cad);
+      console.log(cad);*/
+  }
+
+  onAddVideo(){
+    this.tiktok.next(2);
+  }
+  person1Unsubscribed(){
+    this.personASub.unsubscribe();
   }
 
   printDataAmalinalliComp(event:any){

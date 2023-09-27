@@ -1,3 +1,8 @@
+<button (click)="onAddVideo()">add video</button>
+<button (click)="person1Unsubscribed()">Uns PersonA</button>
+
+
+<!----------------------------------------------------------------------------------------------->
 <p>APP COMPONENT </p>
 <amalinalli-comp status="Busy" (onSendData)="printDataAmalinalliComp($event)"></amalinalli-comp>
 <app-test2 name="Omar" lastName="Labastida" (onSendData)="printData($event)"></app-test2>
@@ -53,3 +58,29 @@
 <ng-container *ngIf="sw"> <!--Para no romper estilos-->
   <p>NG-CONTAINER</p>
 </ng-container>
+
+<input type="text" [(ngModel)]="color">
+<div [style.border]="'3px solid ' + color" style="border:1px solid orange">
+  My div with styles
+</div>
+<input type="number" [(ngModel)]="color">
+<p [style.fontSize.px]="color"><!--Puedo modificar un atributo-->
+  My div with styles
+</p>
+<p [ngStyle]="{
+  'background': color,
+  'border':'5px gray solid'
+}"><!--Puedo modificar una lista de atributos-->
+My p with styles
+</p>
+<p>------------------------------------------------------------------</p>
+<div [class.est1]="color === 'hola'">
+  My div with class
+</div>
+<div [ngClass]="{
+  'est1': color === 'hola',
+  'est2': color === 'hola1',
+  'est3': color === 'hola2',
+}">
+  My div with class
+</div>
