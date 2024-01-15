@@ -149,4 +149,7 @@ export class AppComponent {
   printData(event: any){
     console.log('CHILD COMP SEND DATA:', event);
   }
+  test(event: any){
+    console.log("AMALY DIRECTIVE -- ", event);
+  }
 }
