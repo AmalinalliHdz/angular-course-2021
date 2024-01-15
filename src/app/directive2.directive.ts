@@ -1,9 +1,9 @@
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, TemplateRef, ViewContainerRef, OnChanges } from '@angular/core';
 
 @Directive({
   selector: '[ngIfAmalinalli]',
 })
-export class Directive2Directive {
+export class Directive2Directive implements OnChanges {
   @Input() ngIfAmalinalli = true;
 
   constructor(
@@ -15,5 +15,8 @@ export class Directive2Directive {
     } else {
       this.viewContainerRef.clear();
     }
+  }
+  ngOnChanges(changes: any){
+    console.log("changes: ", changes)
   }
 }
