@@ -16,27 +16,27 @@ AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked{
   }
 
   ngOnInit(){
-    console.log('ON INIT');
+    //console.log('ON INIT');
   }
   ngOnChanges(changes: any){
-    console.log('ON CHANGES', changes);
+    //console.log('ON CHANGES', changes);
   }
   ngDoCheck(){
-    console.log('DO CHECK');
+    //console.log('DO CHECK');
   }
   ngOnDestroy(){
-    console.log('ON DESTROY');
+    //console.log('ON DESTROY');
   }
   ngAfterContentInit(){
-    console.log('CONTENT INIT');
+    //console.log('CONTENT INIT');
   }
   ngAfterContentChecked(){
-    console.log('CONTENT CHECK');
+    //console.log('CONTENT CHECK');
   }
   ngAfterViewInit(){//Util al cargar un maps
-    console.log('VIEW INIT');
+    //console.log('VIEW INIT');
   }
   ngAfterViewChecked(){
-    console.log('VIEW CHECK');
+    //console.log('VIEW CHECK');
   }
 } 
