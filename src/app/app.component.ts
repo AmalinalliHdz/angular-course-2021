@@ -24,7 +24,7 @@ export class AppComponent {
   
   constructor(){
     //observables & subscribes
-    this.tictok.pipe(
+    /*this.tictok.pipe(
       map(s=>s.join('-')),
       map(s=>s + ' Hola ')
     ).subscribe(v => {
@@ -48,7 +48,7 @@ export class AppComponent {
     this.tiktok.subscribe(v => {
       console.log('PC2 VIDEO ', v)
     });
-
+*/
 /*------------------------------------
     //operador MAP [Devuelve un nuevo array]
    const testMap = [1,2,3,4,5,6].map(item => item);

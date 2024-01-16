@@ -6,5 +6,6 @@ import { LoaderComponent } from './loader/loader.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [CardComponent, LoaderComponent],
+  exports: [CardComponent, LoaderComponent],
 })
 export class SharedmoduleModule {}
