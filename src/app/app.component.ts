@@ -10,6 +10,8 @@ import { filter, map } from 'rxjs/operators';
 export class AppComponent {
   @ViewChild('myDiv1') myDiv1: ElementRef;
   @ViewChild('myDiv2') myDiv2: ElementRef;
+
+  @ViewChild('myCompAmalinalli') myCompAmalinalli: any;
   //--------------------------
   title = 'angular2021';
   myStatus = 'my status';
@@ -156,7 +158,8 @@ export class AppComponent {
     console.log("AMALY DIRECTIVE -- ", event);
   }
   onShowLocalVars(){
-    console.log(this.myDiv1, this.myDiv2);
+    console.log(this.myDiv1, this.myDiv2, this.myCompAmalinalli);
     this.myDiv2.nativeElement.value = "Amalinalli";
+    this.myCompAmalinalli.onclickTest();
   }
 }
