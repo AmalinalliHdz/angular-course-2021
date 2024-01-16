@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { BehaviorSubject, of, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
@@ -8,6 +8,9 @@ import { filter, map } from 'rxjs/operators';
   styleUrls: ['./app.component.scss'] //hojas de estilo
 })
 export class AppComponent {
+  @ViewChild('myDiv1') myDiv1: ElementRef;
+  @ViewChild('myDiv2') myDiv2: ElementRef;
+  //--------------------------
   title = 'angular2021';
   myStatus = 'my status';
   sw = true;
@@ -151,5 +154,9 @@ export class AppComponent {
   }
   test(event: any){
     console.log("AMALY DIRECTIVE -- ", event);
+  }
+  onShowLocalVars(){
+    console.log(this.myDiv1, this.myDiv2);
+    this.myDiv2.nativeElement.value = "Amalinalli";
   }
 }

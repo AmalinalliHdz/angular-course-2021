@@ -1,9 +1,15 @@
+<div #myDiv1>Content</div>
+<p>{{ myDiv1 }}</p>
+<input type="text" #myDiv2 value="was here" />
+<p>{{ myDiv2 }}</p>
 
+<button (click)="onShowLocalVars()"> show local vars </button>
 <!------------------------------------------------------------------>
-<input type="checkbox" [(ngModel)] = "sw">ngIfAmalinalli
-<br>
-<div *ngIfAmalinalli="sw" >
-  <p> My structural directive</p>
+<br />
+<input type="checkbox" [(ngModel)]="sw" />ngIfAmalinalli
+<br />
+<div *ngIfAmalinalli="sw">
+  <p>My structural directive</p>
 </div>
 
 <!----------------------------------------------------------------->
@@ -11,47 +17,68 @@
 <button directive1Test (click)="person1Unsubscribed()">Uns PersonA</button>
 
 <!--directive1Test nombre de directiva-->
-<p  directive1Test color='red' (outputTest)='test($event)'> Mi primer directiva de atributo</p>
+<p directive1Test color="red" (outputTest)="test($event)">
+  Mi primer directiva de atributo
+</p>
 
 <!----------------------------------------------------------------------------------------------->
-<p>APP COMPONENT </p>
-<amalinalli-comp status="Busy" (onSendData)="printDataAmalinalliComp($event)"></amalinalli-comp>
-<app-test2 name="Omar" lastName="Labastida" (onSendData)="printData($event)"></app-test2>
+<p>APP COMPONENT</p>
+<amalinalli-comp
+  status="Busy"
+  (onSendData)="printDataAmalinalliComp($event)"
+></amalinalli-comp>
+<app-test2
+  name="Omar"
+  lastName="Labastida"
+  (onSendData)="printData($event)"
+></app-test2>
 
-<input type="text" [(ngModel)]="myStatus">
-<button (click) ="sw = !sw"> show test 3</button>
+<input type="text" [(ngModel)]="myStatus" />
+<button (click)="sw = !sw">show test 3</button>
 <!--<div *ngIf="sw"> destruye el componente-->
-<div [hidden]="sw"> <!--Div existe pero lo oculta-->
+<div [hidden]="sw">
+  <!--Div existe pero lo oculta-->
   <app-test3 [name3]="myStatus"></app-test3>
 </div>
 
 <ul>
-  <li *ngFor="let item of [1,2,3,4,5]">{{item}}</li>
-  <li *ngFor="let item of ['first', 'second'], let i = index">{{item}}{{i}}</li>
-  <li *ngFor="let item of ['first', 'second']">
-    <amalinalli-comp [status]="item" (onSendData)="printDataAmalinalliComp($event)"></amalinalli-comp>
+  <li *ngFor="let item of [1, 2, 3, 4, 5]">{{ item }}</li>
+  <li *ngFor="let item of ['first', 'second']; let i = index">
+    {{ item }}{{ i }}
   </li>
-
+  <li *ngFor="let item of ['first', 'second']">
+    <amalinalli-comp
+      [status]="item"
+      (onSendData)="printDataAmalinalliComp($event)"
+    ></amalinalli-comp>
+  </li>
 </ul>
 
-<input type="text" [(ngModel)]="color">
+<input type="text" [(ngModel)]="color" />
 <ul [ngSwitch]="color">
-  <li *ngSwitchCase="'red'">red
-    <amalinalli-comp [status]="color" (onSendData)="printDataAmalinalliComp($event)"></amalinalli-comp>
+  <li *ngSwitchCase="'red'">
+    red
+    <amalinalli-comp
+      [status]="color"
+      (onSendData)="printDataAmalinalliComp($event)"
+    ></amalinalli-comp>
   </li>
-  <li *ngSwitchCase="'yellow'">yellow
+  <li *ngSwitchCase="'yellow'">
+    yellow
     <app-test3 [name3]="color"></app-test3>
   </li>
   <li *ngSwitchCase="'green'">green</li>
   <li *ngSwitchDefault>Default</li>
 </ul>
 
-<button (click) ="sw = !sw"> show test 3</button>
-<div *ngIf="sw else myVarElse"> <!--destruye el componente-->
+<button (click)="sw = !sw">show test 3</button>
+<div *ngIf="sw; else myVarElse">
+  <!--destruye el componente-->
   <app-test3 [name3]="myStatus"></app-test3>
 </div>
 
-<ng-template #myVarElse> <!--Variable local #-->
+<ng-template #myVarElse>
+  <!--Variable local #-->
   <p>ESTE ES MI TEMPLATE</p>
   <p>ESTE ES MI TEMPLATE</p>
   <p>ESTE ES MI TEMPLATE</p>
@@ -60,38 +87,44 @@
   <p>ESTE ES MI TEMPLATE</p>
 </ng-template>
 
-<app-test2 name="Omar" lastName="Labastida" (onSendData)="printData($event)"><!--ng-content-->
+<app-test2 name="Omar" lastName="Labastida" (onSendData)="printData($event)"
+  ><!--ng-content-->
   <p>Mi propio contenido</p>
   <button>Mi boton</button>
 </app-test2>
 
-<button (click) ="sw = !sw"> show test 3</button>
-<ng-container *ngIf="sw"> <!--Para no romper estilos-->
+<button (click)="sw = !sw">show test 3</button>
+<ng-container *ngIf="sw">
+  <!--Para no romper estilos-->
   <p>NG-CONTAINER</p>
 </ng-container>
 
-<input type="text" [(ngModel)]="color">
+<input type="text" [(ngModel)]="color" />
 <div [style.border]="'3px solid ' + color" style="border:1px solid orange">
   My div with styles
 </div>
-<input type="number" [(ngModel)]="color">
-<p [style.fontSize.px]="color"><!--Puedo modificar un atributo-->
+<input type="number" [(ngModel)]="color" />
+<p [style.fontSize.px]="color">
+  <!--Puedo modificar un atributo-->
   My div with styles
 </p>
-<p [ngStyle]="{
-  'background': color,
-  'border':'5px gray solid'
-}"><!--Puedo modificar una lista de atributos-->
-My p with styles
+<p
+  [ngStyle]="{
+    background: color,
+    border: '5px gray solid'
+  }"
+>
+  <!--Puedo modificar una lista de atributos-->
+  My p with styles
 </p>
 <p>------------------------------------------------------------------</p>
-<div [class.est1]="color === 'hola'">
-  My div with class
-</div>
-<div [ngClass]="{
+<div [class.est1]="color === 'hola'">My div with class</div>
+<div
+  [ngClass]="{
   'est1': color === 'hola',
   'est2': color === 'hola1',
   'est3': color === 'hola2',
-}">
+}"
+>
   My div with class
 </div>
