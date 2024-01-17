@@ -1,6 +1,13 @@
 <div style="border: 2px green solid;">
-admin1 component!
+  admin1 component!
   <app-loader></app-loader>
   <app-card></app-card>
+  <div>
+    <p>{{ 'amalinalli' | uppercase }}</p>
+    <p>{{ 'AMALINALLI' | lowercase }}</p>
+    <p *ngFor="let item of ['a', 'b', 'c', 'd', 'e'] | slice: 2:4">
+      {{ item }}
+    </p>
+    <p>{{ auxJson | json }}</p>
+  </div>
 </div>
-
