@@ -11,3 +11,7 @@
     <p>{{ auxJson | json }}</p>
   </div>
 </div>
+<p *ngFor="let item of auxObs$ | async">
+  {{ item }}
+</p>
+<button (click)="onAdd()">ADD</button>
