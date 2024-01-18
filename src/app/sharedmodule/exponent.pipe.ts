@@ -4,7 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'exponent',
 })
 export class ExponentPipe implements PipeTransform {
-  transform(value: number, exponent: number): number {
-    return Math.pow(value, exponent);
+  transform(value: number, exponent?: number): number {
+    //return Math.pow(value, exponent ?? 1);
+    return Math.pow(value, isNaN(exponent) ? 1 : exponent);
   }
 }
