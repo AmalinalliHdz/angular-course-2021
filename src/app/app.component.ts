@@ -4,10 +4,84 @@ import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root', //Nombre del componente
-  templateUrl: './app.component.html',//HTML que va a usar el componente
-  styleUrls: ['./app.component.scss'] //hojas de estilo
+  templateUrl: './app.component.html', //HTML que va a usar el componente
+  styleUrls: ['./app.component.scss'], //hojas de estilo
 })
 export class AppComponent {
+  wallets = [
+    { wallet: 'Amalinalli123', name: 'Amaly', eth: 0, btc: 2 },
+    { wallet: 'Omar123', name: 'Omar', eth: 5, btc: 2 },
+    { wallet: 'Sinai123', name: 'Sinai', eth: 6, btc: 3 },
+    { wallet: 'Ale123', name: 'Ale', eth: 0, btc: 5 },
+    { wallet: 'Rolando123', name: 'Rolando', eth: 10, btc: 12 },
+  ];
+
+  transactions = [
+    {
+      date: '2024-01-18',
+      from: 'Amalinalli123',
+      to: 'Omar123',
+      quantity: '2',
+      moneyType: 'btc',
+      mineType: 'PoW',
+      miner: '5',
+    },
+    {
+      date: '2024-01-18',
+      from: 'Omar123',
+      to: 'Sinai123',
+      quantity: '2',
+      moneyType: 'eth',
+      mineType: 'PoS',
+      miner: '2',
+    },
+    {
+      date: '2024-01-18',
+      from: 'Sinai123',
+      to: 'Ale123',
+      quantity: '2',
+      moneyType: 'btc',
+      mineType: 'PoW',
+      miner: '5',
+    },
+    {
+      date: '2024-01-18',
+      from: 'Ale123',
+      to: 'Rolando123',
+      quantity: '2',
+      moneyType: 'eth',
+      mineType: 'PoS',
+      miner: '1',
+    },
+    {
+      date: '2024-01-18',
+      from: 'Rolando123',
+      to: 'Amalinalli123',
+      quantity: '2',
+      moneyType: 'btc',
+      mineType: 'PoW',
+      miner: '21',
+    },
+    {
+      date: '2024-01-18',
+      from: 'Amalinalli123',
+      to: 'Sinai123',
+      quantity: '2',
+      moneyType: 'eth',
+      mineType: 'PoS',
+      miner: '2',
+    },
+    {
+      date: '2024-01-18',
+      from: 'Sinai123',
+      to: 'Rolando123',
+      quantity: '2',
+      moneyType: 'btc',
+      mineType: 'PoW',
+      miner: '5',
+    },
+  ];
+
   @ViewChild('myDiv1') myDiv1: ElementRef;
   @ViewChild('myDiv2') myDiv2: ElementRef;
 
@@ -16,13 +90,12 @@ export class AppComponent {
   title = 'angular2021';
   myStatus = 'my status';
   sw = true;
-  color ='';
-  tictok = of([1,2,3,4,5]);
+  color = '';
+  tictok = of([1, 2, 3, 4, 5]);
   tiktok = new BehaviorSubject(1); //Solo almacena datos
-  personASub: Subscription=new Subscription;
-  
-  
-  constructor(){
+  personASub: Subscription = new Subscription();
+
+  constructor() {
     //observables & subscribes
     /*this.tictok.pipe(
       map(s=>s.join('-')),
@@ -49,7 +122,7 @@ export class AppComponent {
       console.log('PC2 VIDEO ', v)
     });
 */
-/*------------------------------------
+    /*------------------------------------
     //operador MAP [Devuelve un nuevo array]
    const testMap = [1,2,3,4,5,6].map(item => item);
    console.log(testMap);
@@ -140,26 +213,26 @@ export class AppComponent {
       console.log(cad);*/
   }
 
-  onAddVideo(){
+  onAddVideo() {
     this.tiktok.next(2);
   }
-  person1Unsubscribed(){
+  person1Unsubscribed() {
     this.personASub.unsubscribe();
   }
 
-  printDataAmalinalliComp(event:any){
-    console.log('AMALINALLI COMP:', event)
+  printDataAmalinalliComp(event: any) {
+    console.log('AMALINALLI COMP:', event);
   }
 
-  printData(event: any){
+  printData(event: any) {
     console.log('CHILD COMP SEND DATA:', event);
   }
-  test(event: any){
-    console.log("AMALY DIRECTIVE -- ", event);
+  test(event: any) {
+    console.log('AMALY DIRECTIVE -- ', event);
   }
-  onShowLocalVars(){
+  onShowLocalVars() {
     console.log(this.myDiv1, this.myDiv2, this.myCompAmalinalli);
-    this.myDiv2.nativeElement.value = "Amalinalli";
+    this.myDiv2.nativeElement.value = 'Amalinalli';
     this.myCompAmalinalli.onclickTest();
   }
 }
