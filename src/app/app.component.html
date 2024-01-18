@@ -1,28 +1,21 @@
 <p>----------------------------WALLETS----------------------------</p>
-<div *ngFor= "let wallet of wallets">
-  {{wallet| json}}
+<div style="display: flex; flex:direction:row">
+  <div *ngFor="let wallet of wallets" style="border: 5px pink solid">
+    {{ wallet | json }}
+    <app-wallet [data]="wallet"></app-wallet>
+  </div>
 </div>
 <p>--------------------------TANSACTIONS--------------------------</p>
-<div *ngFor= "let transaction of transactions">
-  {{transaction | json}}
+<div style="display: flex; flex:direction:row">
+  <div *ngFor="let transaction of transactions" style="border: 5px purple solid">
+    {{ transaction | json }}
+    <app-transaction [data]="transaction"></app-transaction>
+  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <app-admin2></app-admin2>
-<br>
+<br />
 
 <p>APP</p>
 <app-admin1>Hola</app-admin1>
