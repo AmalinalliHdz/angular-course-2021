@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { Directive1Directive } from './directive1.directive';
@@ -12,6 +13,7 @@ import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
 import { Test3Component } from './test3/test3.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { USERComponent } from './user/user.component';
 import { WalletComponent } from './wallet/wallet.component';
 
 @NgModule({
@@ -24,8 +26,16 @@ import { WalletComponent } from './wallet/wallet.component';
     Directive2Directive,
     WalletComponent,
     TransactionComponent,
+    USERComponent,
   ],
-  imports: [BrowserModule, FormsModule, AdminModule, BuyModule, HomeModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AdminModule,
+    BuyModule,
+    HomeModule,
+    AppRoutingModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
