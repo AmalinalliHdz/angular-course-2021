@@ -8,7 +8,7 @@ import { filter, map } from 'rxjs/operators';
   styleUrls: ['./app.component.scss'], //hojas de estilo
 })
 export class AppComponent {
-  wallets = [
+  wallets: any[] = [
     { wallet: 'Amalinalli123', name: 'Amaly', eth: 0, btc: 2 },
     { wallet: 'Omar123', name: 'Omar', eth: 5, btc: 2 },
     { wallet: 'Sinai123', name: 'Sinai', eth: 6, btc: 3 },
@@ -16,7 +16,7 @@ export class AppComponent {
     { wallet: 'Rolando123', name: 'Rolando', eth: 10, btc: 12 },
   ];
 
-  transactions = [
+  transactions: any[] = [
     {
       date: '2024-01-18',
       from: 'Amalinalli123',
@@ -234,5 +234,29 @@ export class AppComponent {
     console.log(this.myDiv1, this.myDiv2, this.myCompAmalinalli);
     this.myDiv2.nativeElement.value = 'Amalinalli';
     this.myCompAmalinalli.onclickTest();
+  }
+
+  onMine(transaction: any, i: number): void {
+    const indexFrom = this.wallets.findIndex(
+      (w) => w.wallet === transaction.from
+    );
+    const indexTo = this.wallets.findIndex(
+      (w) => w.wallet === transaction.from
+    );
+
+    this.wallets[indexFrom][transaction.moneyType] =
+      this.wallets[indexFrom][transaction.moneyType] - transaction.quantity;
+
+    this.wallets[indexTo][transaction.moneyType] =
+      this.wallets[indexTo][transaction.moneyType] + transaction.quantity;
+
+    this.transactions.splice(i, 1);
+  }
+
+  getTransactionsStatus(): boolean {
+    const aux = this.transactions.filter(
+      (t) => t.mineType === 'PoS' && t.miner < 20
+    );
+    return this.transactions.length === aux.length;
   }
 }

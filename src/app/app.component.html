@@ -1,3 +1,5 @@
+<div *ngIf="getTransactionsStatus()">THERE ARE NOT TRANSACTIONS</div>
+
 <p>----------------------------WALLETS----------------------------</p>
 <div style="display: flex; flex:direction:row">
   <div *ngFor="let wallet of wallets" style="border: 5px pink solid">
@@ -7,12 +9,21 @@
 </div>
 <p>--------------------------TANSACTIONS--------------------------</p>
 <div style="display: flex; flex:direction:row">
-  <div *ngFor="let transaction of transactions" style="border: 5px purple solid">
+  <div
+    *ngFor="let transaction of transactions; let i = index"
+    style="border: 5px purple solid"
+  >
     {{ transaction | json }}
-    <app-transaction [data]="transaction"></app-transaction>
+    <app-transaction [data]="transaction">
+      <button
+        [disabled]="transaction.mineType === 'PoS' && transaction.miner < 20"
+        (click)="onMine(transaction, i)"
+      >
+        Miner
+      </button>
+    </app-transaction>
   </div>
 </div>
-
 
 <app-admin2></app-admin2>
 <br />
