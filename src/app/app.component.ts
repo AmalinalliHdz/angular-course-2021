@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, of, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
@@ -95,7 +96,7 @@ export class AppComponent {
   tiktok = new BehaviorSubject(1); //Solo almacena datos
   personASub: Subscription = new Subscription();
 
-  constructor() {
+  constructor(private router: Router) {
     //observables & subscribes
     /*this.tictok.pipe(
       map(s=>s.join('-')),
@@ -258,5 +259,13 @@ export class AppComponent {
       (t) => t.mineType === 'PoS' && t.miner < 20
     );
     return this.transactions.length === aux.length;
+  }
+
+  goUser() {
+    this.router.navigate(['/user']);
+  }
+
+  goHome() {
+    this.router.navigate(['/']);
   }
 }
